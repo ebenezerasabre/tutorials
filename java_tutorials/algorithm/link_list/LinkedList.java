@@ -5,90 +5,85 @@ class Node {
 
 	public Node(int data){
 		this.data = data;
-		this.next = next;
-		this.prev = prev;
+		this.next = null;
+		this.prev = null;
+
 	}
 
 }
 
 
-class Dbl_lnk_list {
+class doubly_linked_list {
 	private Node head;
 
-	public Dbl_lnk_list(){
-		this.head = null;
+	public doubly_linked_list(){
+		head = null;
 	}
 
-	// Method to insert a new node at the end of the dbl lnk list
+	// insert node
 	public void insertEnd(int data){
 		Node newNode = new Node(data);
-
 		if(head == null){
 			head = newNode;
 		} else {
 			Node current = head;
+			// find a free node to insert
 			while(current.next != null){
 				current = current.next;
 			}
 			current.next = newNode;
 			newNode.prev = current;
 		}
+	}
+	// delete node
+	public void deleteNode(int data){
+		Node current = head;
+		while(current != null){
+			if(current.data == data){
+
+				// check if there's previous node
+				if(current.prev != null){
+					current.prev.next = current.next;
+
+				} else {
+					// current is head, move head to next node
+					head = current.next;
+				}
+
+				// check if there's next node
+				if(current.next != null){
+					current.next.prev = current.prev;
+				}
+				// delete completed break
+				break;
+			}
+
+			// increment to next node
+			current = current.next;
+		}
 
 	}
-
-
-	// method to update the data of anode in the doubly llinked list
+	// update node
 	public void updateNode(int old_data, int new_data){
 		Node current = head;
 		while(current != null){
 			if(current.data == old_data){
 				current.data = new_data;
-				break;
 			}
-			current = current.next; // for looping
-		}
-
-	}
-
-
-	// method to delete a node from the doubly list
-	public void deleteNode(int data){
-		Node current = head;
-		while(current != null){
-			if(current.data == data){
-				if(current.prev != null){
-					current.prev.next = current.next;
-				} else {
-
-					head = current.next;
-				}
-
-				if(current.next != null){
-
-					current.next.prev = current.prev;
-				}
-
-				break;
-			}
-
 			current = current.next;
 		}
 
 	}
 
-	// Method to display the elements of the doubly linked list in forward 
-	// direction
 	public void displayForward(){
 		Node current = head;
 		while(current != null){
-
 			System.out.print(current.data + " ");
 			current = current.next;
 		}
 		System.out.println();
 	}
 
-	// print elements backward
 	public void displayBackward(){
 		Node current = head;
 		while(current.next != null){
@@ -104,30 +99,27 @@ class Dbl_lnk_list {
 	}
 
 
-
 }
 
-
-
-
-
-public class linked {
-
+public class LinkedList {
+	
 	public static void main(String[] args){
-		Dbl_lnk_list dbl = new Dbl_lnk_list();
+		doubly_linked_list linked = new doubly_linked_list();
+		linked.insertEnd(5);
+		linked.insertEnd(12);
+		linked.insertEnd(45);
+		linked.insertEnd(100);
+		linked.insertEnd(1);
+		linked.insertEnd(30);
 
-		// inserting node at end
-		dbl.insertEnd(1);
-		dbl.insertEnd(5);
-		dbl.insertEnd(2);
-		dbl.insertEnd(10);
-
-		dbl.displayForward();
-
-		System.out.println("linked");
-
-		dbl.displayBackward();
-
+		//linked.deleteNode(1);
+		linked.displayForward();
+		linked.deleteNode(1);
+		linked.deleteNode(30);
+		linked.updateNode(5, 155);
+		linked.displayForward();
+		//linked.updateNode(100, 450);
+		//linked.displayForward();
 	}
 
 }
