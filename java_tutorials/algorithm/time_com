@@ -1,0 +1,11 @@
+
+quicksort
+best case ( nlogn ) runtime
+In an ideal we world, we are dividing the array in half each time. We pick a pivot which is roughly the median. And then half of the elements gets pivoted to one side of the array and half of them get pivoted to the other side. And we apply quicksort to each half.
+
+ie. each element gets quicksort called on it logn times.
+
+worst case ( n2 ) runtime
+Everytime we pick the pivot, it happens to be the first element in the array of the lowest element in that
+
+
