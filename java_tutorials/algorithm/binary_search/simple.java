@@ -28,19 +28,6 @@ public class simple {
 		return name;
 	}
  }
-
-class secondClass {
-	int length;
-
-	void new_era(){
-		System.out.println("secondClass called");
-	}
-
-	public secondClass(){
-		this.length = 10;
-	}
-}
-
 class TreeNode {
 	int data;
 	TreeNode left;
