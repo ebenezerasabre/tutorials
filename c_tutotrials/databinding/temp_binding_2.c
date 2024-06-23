@@ -7,8 +7,12 @@
 #define SENSOR_COUNT 3
 #define LOG_FILE "temperature_log.txt"
 
+
+struct Model;
+struct Controller;
+
 // Model: Holds the temperature data and thresholds
-typedef struct {
+typedef struct Model {
 	float temperatures[SENSOR_COUNT];
 	float upperThreshold;
 	float lowerThreshold;
@@ -40,7 +44,7 @@ void logTemperatures(float temperatures[], int count){
 }
 
 // Controller: Updates the model and notifies the view
-typedef struct {
+typedef struct Controller {
 	Model * model;
 	ViewUpdateFunc viewUpdate;
 } Controller;
