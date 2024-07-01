@@ -1,4 +1,3 @@
 Find the lost sword,10
 Save the village from goblins,20
 Retrieve the magic amulet,15
-
