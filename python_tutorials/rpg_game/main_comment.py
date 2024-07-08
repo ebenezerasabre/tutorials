@@ -1,3 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import json
 import random
 
@@ -58,7 +72,12 @@ class Archer(Character):
 
 """"
 
-Inventory systems are important in game developement
+If you've ever played a game before your realize that the player can pick certain items
+It could be a sword, or coins or stars
+All those items are called inventory system
+
+
+Inventory systems are important in game developement, It provides
 
 Item Management: It allows players to collect, store, and manage items they find during their adventures. 
 These items can include weapons, armor, potions, and other useful objects.
@@ -72,11 +91,8 @@ For example, equipping a better weapon can increase attack power, while wearing 
 Quest Items: Some items may be required to complete quests.
  The inventory keeps track of these items until they are used or given to NPCs.
 
-Game Progression: Collecting and using items can be essential for progressing through the game. 
-For example, finding keys to unlock new areas or potions to survive tough battles.
-
-
 """
+
 
 # First let us define an Item class
 #Any item will have these attributes
@@ -88,6 +104,8 @@ class Item:
         self.item_type = item_type
         self.effect = effect
 
+    # now we write the method that defines how to use an item
+    # in this game we have two items Potion and Weapon
     def use(self, character):
         if self.item_type == 'potion':
             character.hp = min(character.hp + self.effect, character.level * 10 + 90)
@@ -111,15 +129,16 @@ class Inventory:
     def remove_item(self, item):
         self.items.remove(item)
 
-    #we can use an item
+    #To use an item
     # we will loop through our items
-    # after using, we remove it
+    # use, we remove it when we are done
     def use_item(self, item_name, character):
         for item in self.items:
             if item.name == item_name:
                 item.use(character)
                 self.remove_item(item)
                 return True
+        # If i tem is not found
         print("Item not found.")
         return False
 
@@ -143,8 +162,8 @@ The battle system in this game is a turn-based combat mechanism
 where the player and enemies take turns to attack each other.
 
 During each turn, the player can choose to perform actions such as attacking,
-using an item from the inventory, or executing special abilities unique
-to their character class (Warrior, Mage, Archer).
+using an item from the inventory, or executing special abilities
+ unique to their character class (Warrior, Mage, Archer).
 
 The goal is to reduce the opponent's HP to zero while
 keeping the player's character alive.
@@ -153,6 +172,7 @@ keeping the player's character alive.
 
 
 # Battle System
+# we will create a function for battle
 def battle(player, enemy):
     while player.is_alive() and enemy.is_alive():
         enemy.take_damage(player.attack)
@@ -166,8 +186,15 @@ def battle(player, enemy):
     else:
         print("You were defeated...")
 
+ 
 
 """"
+An important import of any game is the ability of a player to move
+Sometimes the movement of a player can trigger an even
+For example if the player touches a star his life span increase or whatever
+In this game the play can be able to move north, south, east and west
+
+
 Movement and Navigation: It allows the player to move between different locations on the map. 
 The Map class can define possible movements and ensure that the player
  follows the intended paths within the game world.
@@ -242,6 +269,8 @@ def load_quests(filename):
                 print(f"Invalid reward value: {reward} in line: {line}")
     return quests
 
+
+
 """
 We will create a Non-Player character class
 It will be responsible for quest management and also dialog
@@ -290,7 +319,10 @@ def main():
 
 # if he chooses to play a new game, he will hav to choose his character
 def start_new_game():
+    # when starting a new game, we ask the user for his name
     name = input("Enter your character's name: ")
+
+    # after that user has to select his player type
     print("Choose your class:")
     print("1. Warrior")
     print("2. Mage")
@@ -324,9 +356,10 @@ def start_new_game():
     npcs = [NPC("Old Man", "Welcome to our village! We need your help.", quests[0])]
 
 
-    #Now if the player is alive we will provide him with what he can do in the game
-    # and get his choice
+    #Now if the player is alive we will provide him with
+    #  what he can do in the game and get his choice
     while player.is_alive():
+
         print("\nGame Menu:")
         print("1. Explore")
         print("2. Check Inventory")
@@ -347,7 +380,7 @@ def start_new_game():
             elif event == 'treasure':
                 print("You found a treasure!")
                 inventory.add_item(Item("Gold", "treasure", 0))
-            elif event == 'npc':
+            elif event == 'n`pc':
                 npc = random.choice(npcs)
                 print(f"You meet {npc.name}.")
                 quest = npc.interact(player)
