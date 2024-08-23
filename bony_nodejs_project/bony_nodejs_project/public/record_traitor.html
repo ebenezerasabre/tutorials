@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>W3.CSS Template</title>
+
+
+
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Page with Image and Overlay Text</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/bn.js"></script>
+
+    <style>
+        .ui-datepicker-calendar .ui-state-default {
+            font-family: 'Kalpurush', sans-serif;
+        }
+
+        /* Custom styles to match the look of the reference page */
+        .custom-header {
+            background-color: #1c1c1c;
+            color: white;
+            text-align: center;
+            position: relative;
+            padding: 0;
+        }
+        .header-image {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+        }
+        /* Overlay text styles */
+        .overlay-text {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: yellow;
+            
+         
+            text-align: center;
+            width: 80%; /* Set the width to make the block wider */
+            max-width: 2000px; /* Optional: max width to control the widest the block can be */
+        
+        }
+        .overlay-text .large-text {
+            font-size: 25px; /* Larger text */
+            font-weight: bold;
+        }
+        .overlay-text .small-text {
+            font-size: 20px; /* Smaller text */
+        }
+        .custom-navbar {
+            background-color: #444;
+            overflow: hidden;
+        }
+        .custom-navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        .custom-navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .custom-navbar a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        /* Responsive design */
+        @media screen and (max-width: 600px) {
+            .custom-navbar a {
+                float: none;
+                width: 100%;
+            }
+        }
+
+
+
+
+  #rcorners2 {
+  border-radius: 15px 50px 30px;
+  padding: 10px; 
+  width: 250px;
+  height: 200px; 
+}
+
+
+  body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+  }
+  
+  .slider {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 5px;
+  }
+  
+  .slider-container {
+      display: flex;
+      transition: transform 1s ease-in-out;
+  }
+  
+  .slider-container a {
+      min-width: 100%;
+  }
+  
+  .slider-container img {
+      width: 100%;
+      height: 600px;
+  }
+  
+  .dots {
+      text-align: center;
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+  }
+  
+  .dot {
+      display: inline-block;
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.6s ease;
+  }
+  
+  .active {
+      background-color: #717171;
+  }
+  
+  #rcorners2 {
+      border-radius: 15px 50px 30px;
+      padding: 10px;
+      width: 250px;
+      height: 200px; 
+  }
+  
+  /* Zoom animation */
+  @keyframes zoomInOut {
+      0%, 100% {
+          transform: scale(1);
+      }
+      50% {
+          transform: scale(1.2);
+      }
+  }
+  
+  .w3-dropdown-hover .w3-button.zoom-animation {
+      animation: zoomInOut 2s infinite;
+  }
+  
+  </style>
+
+
+</head>
+<body id="myPage">
+
+
+
+<!-- Navbar -->
+<div class="w3-top w3-center w3-padding-16 w3-red">
+  <div class="w3-bar w3-left-align">
+   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2 " href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+   <a href="./Home.html" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right w3-xlarge"></i>Home</a>
+   <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white">বিষয়বস্তু</a>
+
+   <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button" title="Notifications">পরিসংখ্যান <i class="fa fa-caret-down"></i></button>     
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a href="#" class="w3-bar-item w3-button">শহীদ</a>
+      <a href="./injured.html" class="w3-bar-item w3-button">আহত</a>
+      <a href="#" class="w3-bar-item w3-button">নিঁখোজ</a>
+      <a href="#" class="w3-bar-item w3-button">নেতৃবৃন্দ</a>
+    </div>
+  </div>
+
+
+
+  <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white">অপরাধী</a>
+   <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">যুদ্ধকথন</a>
+     <div class="w3-dropdown-hover w3-hide-small">
+     <button class="w3-button zoom-animation" title="Notifications" style="background-color: blue; color: white;">
+        তথ্য দিন <i class="fa fa-caret-down"></i></button>     
+     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a href="#" class="w3-bar-item w3-button">শহীদ</a>
+      <a href="./record.html" class="w3-bar-item w3-button">আহত</a>
+      <a href="#" class="w3-bar-item w3-button">নিঁখোজ</a>
+     </div>
+   </div>
+   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+  </div>
+
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
+    <a href="#team" class="w3-bar-item w3-button">Team</a>
+    <a href="#work" class="w3-bar-item w3-button">Work</a>
+    <a href="#pricing" class="w3-bar-item w3-button">Price</a>
+    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    <a href="#" class="w3-bar-item w3-button">Search</a>
+  </div>
+</div>
+
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="aa.jpg" alt="boat" style="width:100%;min-height:100px;max-height:500px;">
+  <div class="overlay-text">
+    <span class="large-text">স্বৈরাচার পতন আন্দোলন- ২০২৪ এ খুনী ও স্বৈরাচার শাসকের দোসরদের তালিকাভুক্ত করতে এগিয়ে আসুন।</span><br>
+        <span class="small-text">আন্দোলন পরবর্তী বাংলাদেশকে সুন্দরভাবে গড়ে তুলতে এর মানবসম্পদকে সুস্থ ও সুন্দর করে গড়ে তুলতে হবে। এই মুহূর্তে আন্দোলনে আহত ছাত্র-জনতা এবং তাদের পরিবারবর্গ দেশের বিভিন্ন স্থানে বিভিন্নভাবে অসহযোগিতা কিংবা আর্থিক অস্বচ্ছলতার মুখোমুখি হচ্ছে। তাদের উপযুক্ত চিকিৎসা নিশ্চিত করতে এবং তাদের জীবনকে সহজ করতে আমাদের সকলকে এগিয়ে আসতে হবে। নিঃসন্দেহে আজকের এই স্বাধীন দেশকে নতুন করে পাওয়ার পিছনে আহতদের ভূমিকা অনস্বীকার্য।
+           </span><br>
+          <span class="small-text">**সকল আহতদের নির্ভরযোগ্য তথ্য দিয়ে তাদের পাশে দাঁড়ানো এবং তাদের অবদানের স্বীকৃতি প্রদান করা সুনাগরিক হিসেবে আমাদের সকলের কর্তব্য।** </span>
+    
+
+</div>
+</div>
+
+
+
+
+
+
+<!-- Team Container -->
+<div class="w3-container w3-padding-64 w3-center" id="team">
+<h2>আহতদের তথ্য নিবন্ধীকরণ</h2>
+
+<form class="w3-container" method="POST" action="/submit">
+
+    <!-- Name Field Block -->
+    <div class="w3-row-padding w3-margin">
+      <div class="w3-third">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 10%; text-align: left;">নাম:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="আহতের নাম" name="injured_name" id="injured_name" required style="width: 80%;">
+        </div>
+      </div>
+
+
+      <div class="w3-third">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 30%; text-align: left;">জন্মতারিখ:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="জন্মতারিখ" name="dob" id="dob" required style="width: 80%;">
+        </div>
+      </div>
+
+      <!-- Date of Birth Field Block -->
+      <div class="w3-third">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="dob" style="width: 20%; text-align: left;">এন আই ডি:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="এন আই ডি/ জন্মনিবন্ধন নং" name="NID" id="NID"  style="width: 80%;">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      flatpickr("#dob", {
+        dateFormat: "d.m.Y",
+        locale: "bn",
+        altInput: true,
+        altFormat: "d.m.Y",
+        allowInput: true
+      });
+    </script>
+
+
+
+<!-- Address Field Block -->
+
+<!-- Division and District Field Block -->
+<div class="w3-row-padding w3-margin w3-margin-bottom">
+  <div class="w3-third">
+    <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+      <label for="injured_address" style="width: 20%; text-align: left;">ঠিকানা:</label>
+      <input class="w3-input w3-hover-shadow" type="text" placeholder="ঠিকানা" name="injured_address" id="injured_address" required style="width: 80%;">
+    </div>
+  </div>
+  <div class="w3-third">
+    <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+      <label for="division" style="width: 20%; text-align: left;">বিভাগ:</label>
+      <select class="w3-select w3-hover-shadow" name="division" id="division" onchange="populateDistricts()" required style="width: 80%;">
+        <option value="" disabled selected>বিভাগ বাছাই করুন</option>
+        <option value="barishal">বরিশাল</option>
+        <option value="chittagong">চট্টগ্রাম</option>
+        <option value="dhaka">ঢাকা</option>
+        <option value="mymensingh">ময়মনসিংহ</option>
+        <option value="khulna">খুলনা</option>
+        <option value="rajshahi">রাজশাহী</option>
+        <option value="rangpur">রংপুর</option>
+        <option value="sylhet">সিলেট</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="w3-third">
+    <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+      <label for="district" style="width: 20%; text-align: left;">জেলা:</label>
+      <select class="w3-select w3-hover-shadow" name="district" id="district" required style="width: 80%;">
+        <option value="" disabled selected>জেলা বাছাই করুন</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<script>
+  const districtData = {
+      dhaka: ["ঢাকা","ফরিদপুর","গাজীপুর","গোপালগঞ্জ","কিশোরগঞ্জ","মাদারীপুর","মানিকগঞ্জ","মুন্সীগঞ্জ","নারায়ণগঞ্জ","নরসিংদী","রাজবাড়ী","শরীয়তপুর","টাঙ্গাইল"],
+      chittagong: ["বান্দরবান","ব্রাহ্মনবাড়ীয়া","চাঁদপুর","চট্টগ্রাম","কুমিল্লা","কক্সবাজার","ফেনী","খাগড়াছড়ি","লক্ষীপুর","নোয়াখালী","রাঙ্গামাটি"],
+      rajshahi: ["বগুরা","জয়পুরহাট","নওগাঁ","নাটোর","চাঁপাই নওয়াবগঞ্জ","পাবনা","রাজশাহী","সিরাজগঞ্জ"],
+      khulna: ["বাগেরহাট","চুয়াডাঙা","যশোর","ঝিনাইদহ","খুলনা","কুষ্টিয়া","মাগুরা","মেহেরপুর","নড়াইল","সাতক্ষীরা"],
+      barishal: ["বরগুনা","বরিশাল","ভোলা","ঝালকাঠী","পটুয়াখালী","পিরোজপুর"],
+      sylhet: ["হবিগঞ্জ","মৌলভীবাজার","সুনামগঞ্জ","সিলেট"],
+      rangpur: ["রংপুর","গাইবান্ধা","কুড়িগ্রাম","নীলফামারী","লালমনিরহাট","দিনাজপুর","ঠাকুরগাঁও","পঞ্চগড়"],
+      mymensingh: ["জামালপুর","ময়মনসিংহ"," নেত্রকোনা"," শেরপুর"]
+  };
+
+  function populateDistricts() {
+      const divisionSelect = document.getElementById("division");
+      const districtSelect = document.getElementById("district");
+      const selectedDivision = divisionSelect.value;
+
+      // Clear existing options in the district select element
+      districtSelect.innerHTML = '<option value="" disabled selected>জেলা বাছাই করুন</option>';
+
+      // Populate districts based on the selected division
+      if (selectedDivision && districtData[selectedDivision]) {
+          districtData[selectedDivision].forEach(district => {
+              const option = document.createElement("option");
+              option.value = district.toLowerCase();
+              option.textContent = district;
+              districtSelect.appendChild(option);
+          });
+      }
+  }
+</script>
+
+
+    <!-- Name Field Block -->
+    <div class="w3-row-padding w3-margin">
+      <div class="w3-half">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 20%; text-align: left;">পেশা:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="পেশা" name="occupation" id="occupation" required style="width: 80%;">
+        </div>
+      </div>
+
+
+      <div class="w3-half">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 20%; text-align: left;">শিক্ষা প্রতিষ্ঠান/ কর্মস্থল:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="শিক্ষা প্রতিষ্ঠান/ কর্মস্থল" name="jobplace" id="jobplace" style="width: 80%;">
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Name Field Block -->
+    <div class="w3-row-padding w3-margin">
+      <div class="w3-half">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 20%; text-align: left;">চিকিৎসার জন্য প্রয়োজনীয় ব্যয়ের পরিমান (আনুমানিক):</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="চিকিৎসার জন্য প্রয়োজনীয় ব্যয়ের পরিমান (আনুমানিক)" name="expenditure" id="expenditure" style="width: 80%;">
+        </div>
+      </div>
+
+
+     <!-- Payment Options Field Block -->
+<!-- Payment Options Field Block -->
+<div class="w3-half">
+  <div id="paymentOptionsContainer">
+    <!-- Initial Payment Option -->
+    <div class="payment-option-block">
+      <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+        <label for="paymentOption1" style="width: 30%; text-align: left;">পেমেন্ট অপশন:</label>
+        <select class="w3-select w3-hover-shadow" name="paymentOption[]" id="paymentOption1" style="width: 70%;" onchange="handlePaymentOptionChange(1)">
+          <option value="" disabled selected>বাছাই করুন</option>
+          <option value="bkash">বিকাশ</option>
+          <option value="upay">উপায়</option>
+          <option value="nagad">নগদ</option>
+          <option value="rocket">রকেট</option>
+          <option value="bank">ব্যাংক একাউণ্ট</option>
+        </select>
+      </div>
+      <!-- Suboption input will appear here -->
+      <div id="paymentField1" class="field-block w3-margin-top" style="display: none; align-items: center;"></div>
+    </div>
+  </div>
+
+  <button type="button" class="w3-button w3-teal w3-margin-top" onclick="addPaymentOption()">আরও যোগ করুন</button>
+</div>
+
+<script>
+  let paymentOptionCounter = 1;
+
+  function handlePaymentOptionChange(counter) {
+    const selectedOption = document.getElementById('paymentOption' + counter).value;
+    const paymentFieldContainer = document.getElementById('paymentField' + counter);
+
+    paymentFieldContainer.innerHTML = ''; // Clear previous input fields
+    paymentFieldContainer.style.display = 'flex'; // Ensure it is visible
+
+    if (selectedOption === 'bkash') {
+      paymentFieldContainer.innerHTML = `<label for="bkashNumber${counter}" style="width: 30%; text-align: left;">বিকাশ নম্বর:</label>
+                                         <input class="w3-input w3-hover-shadow" type="text" placeholder="বিকাশ নম্বর" name="bkashNumber[]" style="width: 70%;">`;
+    } else if (selectedOption === 'upay') {
+      paymentFieldContainer.innerHTML = `<label for="upayNumber${counter}" style="width: 30%; text-align: left;">উপায় নম্বর:</label>
+                                         <input class="w3-input w3-hover-shadow" type="text" placeholder="উপায় নম্বর" name="upayNumber[]" style="width: 70%;">`;
+    } else if (selectedOption === 'nagad') {
+      paymentFieldContainer.innerHTML = `<label for="nagadNumber${counter}" style="width: 30%; text-align: left;">নগদ নম্বর:</label>
+                                         <input class="w3-input w3-hover-shadow" type="text" placeholder="নগদ নম্বর" name="nagadNumber[]" style="width: 70%;">`;
+    } else if (selectedOption === 'rocket') {
+      paymentFieldContainer.innerHTML = `<label for="rocketNumber${counter}" style="width: 30%; text-align: left;">রকেট নম্বর:</label>
+                                         <input class="w3-input w3-hover-shadow" type="text" placeholder="রকেট নম্বর" name="rocketNumber[]" style="width: 70%;">`;
+    } else if (selectedOption === 'bank') {
+      paymentFieldContainer.innerHTML = `<label for="bankDetails${counter}" style="width: 30%; text-align: left;">ব্যাংক একাউন্ট:</label>
+                                         <input class="w3-input w3-hover-shadow" type="text" placeholder="ব্যাংক একাউন্ট বিস্তারিত" name="bankDetails[]" style="width: 70%;">`;
+    }
+  }
+
+  function addPaymentOption() {
+    paymentOptionCounter++;
+
+    // Create a new payment option block
+    const paymentOptionsContainer = document.getElementById('paymentOptionsContainer');
+    const newPaymentOptionBlock = document.createElement('div');
+    newPaymentOptionBlock.className = 'payment-option-block w3-margin-top';
+
+    // Add the payment option dropdown
+    newPaymentOptionBlock.innerHTML = `
+      <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+        <label for="paymentOption${paymentOptionCounter}" style="width: 30%; text-align: left;">Choose Payment Option:</label>
+        <select class="w3-select w3-hover-shadow" name="paymentOption[]" id="paymentOption${paymentOptionCounter}" style="width: 70%;" onchange="handlePaymentOptionChange(${paymentOptionCounter})">
+          <option value="" disabled selected>Select Option</option>
+          <option value="bkash">Bkash</option>
+          <option value="upay">Upay</option>
+          <option value="nagad">Nagad</option>
+          <option value="rocket">Rocket</option>
+          <option value="bank">Bank Account</option>
+        </select>
+      </div>
+      <div id="paymentField${paymentOptionCounter}" class="field-block w3-margin-top" style="display: none; align-items: center;"></div>
+    `;
+
+    // Append the new block to the container
+    paymentOptionsContainer.appendChild(newPaymentOptionBlock);
+  }
+</script>
+
+
+    </div>
+
+
+
+    
+    <!-- Name Field Block -->
+    <div class="w3-row-padding w3-margin">
+      <div class="w3-half">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 20%; text-align: left;">আহত ব্যক্তির পরিবারের সাথে যোগাযোগের উপায়:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="আহত ব্যক্তির পরিবারের সাথে যোগাযোগের উপায়" name="family_phone" id="family_phone" required style="width: 80%;">
+        </div>
+      </div>
+
+
+      <div class="w3-half">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 20%; text-align: left;">তথ্য প্রদানকারী হিসেবে আপনার নাম, ফোন নাম্বার ও আহত ব্যক্তির সাথে সম্পর্ক:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="তথ্য প্রদানকারী হিসেবে আপনার নাম, ফোন নাম্বার ও আহত ব্যক্তির সাথে সম্পর্ক" name="info_provider" id="info_provider" required style="width: 80%;">
+        </div>
+      </div>
+    </div>
+
+
+
+    
+    <!-- Name Field Block -->
+    <div class="w3-row-padding w3-margin">
+      <div class="w3-half">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 20%; text-align: left;">চিকিৎসার স্থান:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="চিকিৎসার স্থান" name="hospital" id="hospital" required style="width: 80%;">
+        </div>
+      </div>
+
+
+      <div class="w3-half">
+        <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+          <label for="injured_name" style="width: 20%; text-align: left;">চিকিৎসার স্থানের ফোন:</label>
+          <input class="w3-input w3-hover-shadow" type="text" placeholder="চিকিৎসার স্থানের ফোন" name="contact_hospital" id="contact_hospital" style="width: 80%;">
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+<!-- Description of Injury Field Block -->
+<div class="w3-row-padding w3-margin">
+  <div class="w3-half">
+    <div class="field-block" style="display: flex; align-items: center; justify-content: flex-start;">
+      <label for="injury_description" style="width: 20%; text-align: left;">ঘটনার বিবরণ:</label>
+      <textarea class="w3-input w3-hover-shadow" placeholder="ঘটনার বিবরণ (আহত হওয়ার সময়কাল, স্থান, বর্তমান অবস্থা) " name="injury_description" id="injury_description" rows="4" required style="width: 80%;"></textarea>
+    </div>
+  </div>
+  
+  <!-- News Links Field Block -->
+  <!-- News Links Field Block -->
+<div class="w3-half">
+  <div id="newsLinksContainer">
+    <div class="field-block" id="newsLink1" style="display: flex; align-items: center;">
+      <label for="news_link" style="width: 30%; text-align: left;">সংবাদ লিংক:</label>
+      <input class="w3-input w3-hover-shadow" type="text" placeholder="সংবাদ লিংক/ সোশ্যাল মিডিয়া পোস্ট" name="news_link[]" id="news_link[]" style="width: 70%;">
+    </div>
+  </div>
+  <button type="button" class="w3-button w3-teal w3-margin-top" onclick="addNewsLink()">আরও যোগ করুন</button>
+</div>
+
+<script>
+  let newsLinkCounter = 1;
+
+  function addNewsLink() {
+    newsLinkCounter++;
+    const newsLinksContainer = document.getElementById('newsLinksContainer');
+    
+    // Create a new div for the new input field
+    const newNewsLinkDiv = document.createElement('div');
+    newNewsLinkDiv.className = 'field-block w3-margin-top';
+    newNewsLinkDiv.style.display = 'flex';
+    newNewsLinkDiv.style.alignItems = 'center';
+    newNewsLinkDiv.id = `newsLink${newsLinkCounter}`;
+
+    // Create a new label for the new input field (empty for alignment purposes)
+    const newLabel = document.createElement('label');
+    newLabel.style.width = '30%';
+
+    // Create the new input field
+    const newInput = document.createElement('input');
+    newInput.type = 'text';
+    newInput.className = 'w3-input w3-hover-shadow';
+    newInput.name = 'news_link[]';
+    newInput.placeholder = 'News link';
+    newInput.style.width = '70%';
+
+    // Append the new label and input field to the new div
+    newNewsLinkDiv.appendChild(newLabel);
+    newNewsLinkDiv.appendChild(newInput);
+
+    // Append the new div to the newsLinksContainer
+    newsLinksContainer.appendChild(newNewsLinkDiv);
+  }
+</script>
+
+
+
+
+
+
+<!-- Document Upload and Photo Upload Field Block -->
+<div class="w3-row-padding w3-margin">
+  <!-- Document Upload Field -->
+  <div class="w3-half">
+    <div id="documentUploadsContainer">
+      <div class="field-block" id="documentUpload1" style="display: flex; align-items: center;">
+        <label for="document" style="width: 30%; text-align: left;">ডকুমেন্ট আপলোড করুন (প্রেসক্রিপশন, এন আই ডি):</label>
+        <input class="w3-input w3-hover-shadow" type="file" name="document[]" id="document[]" style="width: 70%;">
+      </div>
+    </div>
+    <button type="button" class="w3-button w3-teal w3-margin-top" onclick="addDocumentUpload()">আরও যোগ করুন</button>
+  </div>
+  
+  <!-- Photo Upload Field -->
+  <div class="w3-half">
+    <div class="field-block" style="display: flex; align-items: center;">
+      <label for="photo" style="width: 30%; text-align: left;">ফটো আপলোড:</label>
+      <input class="w3-input w3-hover-shadow" type="file" name="photo" id="photo" required style="width: 70%;">
+    </div>
+  </div>
+</div>
+
+<script>
+  let documentUploadCounter = 1;
+
+  function addDocumentUpload() {
+    documentUploadCounter++;
+    const documentUploadsContainer = document.getElementById('documentUploadsContainer');
+    
+    // Create a new div for the new input field
+    const newDocumentDiv = document.createElement('div');
+    newDocumentDiv.className = 'field-block w3-margin-top';
+    newDocumentDiv.style.display = 'flex';
+    newDocumentDiv.style.alignItems = 'center';
+
+    // Create an empty label for alignment, with the same width as the initial label
+    const newLabel = document.createElement('label');
+    newLabel.style.width = '30%'; // Keep the width consistent for alignment
+
+    // Create the new input field
+    const newInput = document.createElement('input');
+    newInput.type = 'file';
+    newInput.className = 'w3-input w3-hover-shadow';
+    newInput.name = 'document[]';
+    newInput.style.width = '70%';
+
+    // Append the new label and input field to the new div
+    newDocumentDiv.appendChild(newLabel);
+    newDocumentDiv.appendChild(newInput);
+
+    // Append the new div to the documentUploadsContainer
+    documentUploadsContainer.appendChild(newDocumentDiv);
+  }
+</script>
+
+
+
+
+
+  </form>
+
+
+
+
+    <!-- Submit Button Field Block -->
+    <div class="w3-theme-l5 w3-padding-24">
+      <div class="field-block">
+        <input type="submit" value="জমা দিন" class="w3-button w3-teal w3-padding-large">
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+ 
+  
+  <p>Developed by <a href="https://www.abu-bony-amin.com/" target="_blank">Abu Bony Amin</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>   
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+<script>
+// Script for side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "300px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>

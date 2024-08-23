@@ -1,0 +1,19 @@
+/* Define the keyframes for the zoom animation */
+@keyframes zoomInOut {
+    0% {
+      transform: scale(1); /* Normal size */
+    }
+    50% {
+      transform: scale(1.1); /* Zoom in */
+    }
+    100% {
+      transform: scale(1); /* Back to normal size */
+    }
+  }
+  
+  /* Apply the animation to the button */
+  .zoom-animation {
+    animation: zoomInOut 5s infinite ease-in-out; /* Duration 2 seconds, loops infinitely */
+  }
+  
+  

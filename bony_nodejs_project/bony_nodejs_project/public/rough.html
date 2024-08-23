@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>W3.CSS Template with Language Toggle</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+/* Container for the image and button */
+.photo-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* The photo itself */
+.photo {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* The button overlay */
+.overlay-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: yellow;
+    color: red;
+    padding: 15px 30px;
+    font-size: 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    animation: zoom-in-out 2s infinite ease-in-out;
+}
+
+/* Zoom in and out animation */
+@keyframes zoom-in-out {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+/* Overlay text styles */
+.overlay-text {
+    position: absolute;
+    top: 90%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    color: yellow;
+    font-size: 40px; /* Larger text */
+    font-weight: bold;
+    text-align: center;
+    width: 80%; /* Set the width to make the block wider */
+    max-width: 2000px; /* Optional: max width to control the widest the block can be */
+}
+
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Flexbox item for each image */
+.flex-item {
+    flex: 1 0 calc(10% - 10px); /* 10 items per row, subtracting margin */
+    margin: 5px; /* Add some space between images */
+}
+
+/* Make sure images scale properly */
+.flex-item img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* Styling text sizes and removing underline */
+.text-large {
+    font-size: 18px; /* Large text size */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.text-small {
+    font-size: 14px; /* Small text size */
+    text-decoration: none;
+}
+
+/* Remove underline from all links */
+a {
+    text-decoration: none;
+}
+
+#rcorners2 {
+    border-radius: 15px 50px 30px;
+    padding: 10px;
+    width: 250px;
+    height: 200px;
+}
+
+/* Language Toggle Box */
+#language-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: #ffffff;
+    border: 2px solid #333333;
+    border-radius: 25px;
+    padding: 0;
+    width: 160px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden; /* Ensure content stays inside the box */
+}
+
+#language-toggle .language-option {
+    flex: 1;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    padding: 0 10px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+#language-toggle .active {
+    background-color: blue;
+    color: white;
+    border-radius: 25px;
+}
+
+#language-toggle .inactive {
+    background-color: #f0f0f0;
+    color: grey;
+}
+
+/* Add classes to handle language-specific content */
+.bengali-content {
+    display: block;
+}
+
+.english-content {
+    display: none;
+}
+</style>
+</head>
+<body id="myPage">
+
+<!-- Language Toggle Switch -->
+<div id="language-toggle" onclick="toggleLanguage()">
+  <div id="bengali-text" class="language-option active">বাংলা</div>
+  <div id="english-text" class="language-option inactive">English</div>
+</div>
+
+<!-- Sidebar on click -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-card w3-animate-left w3-xxlarge" style="display:none;z-index:2" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-display-topright w3-text-teal">Close
+        <i class="fa fa-remove"></i>
+    </a>
+    <a href="#" class="w3-bar-item w3-button bengali-content">লিংক 1</a>
+    <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button bengali-content">লিংক 2</a>
+    <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button bengali-content">লিংক 3</a>
+    <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Link 3</a>
+    <a href="#" class="w3-bar-item w3-button bengali-content">লিংক 4</a>
+    <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Link 4</a>
+    <a href="#" class="w3-bar-item w3-button bengali-content">লিংক 5</a>
+    <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Link 5</a>
+</nav>
+
+<!-- Navbar -->
+<div class="w3-top w3-center w3-padding-16 w3-red">
+    <div class="w3-bar w3-left-align">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <a href="./Home.html" class="w3-bar-item w3-button w3-teal bengali-content"><i class="fa fa-home w3-margin-right w3-xlarge"></i>হোম</a>
+        <a href="./Home.html" class="w3-bar-item w3-button w3-teal english-content" style="display: none;"><i class="fa fa-home w3-margin-right w3-xlarge"></i>Home</a>
+        <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white bengali-content">বিষয়বস্তু</a>
+        <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white english-content" style="display: none;">About Movement</a>
+        <div class="w3-dropdown-hover w3-hide-small">
+            <button class="w3-button bengali-content" title="Notifications">পরিসংখ্যান <i class="fa fa-caret-down"></i></button>
+            <button class="w3-button english-content" title="Notifications" style="display: none;">Statistics <i class="fa fa-caret-down"></i></button>
+            <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                <a href="#" class="w3-bar-item w3-button bengali-content">শহীদ</a>
+                <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Martyrs</a>
+                <a href="./injured.html" class="w3-bar-item w3-button bengali-content">আহত</a>
+                <a href="./injured.html" class="w3-bar-item w3-button english-content" style="display: none;">Injured</a>
+                <a href="#" class="w3-bar-item w3-button bengali-content">নিঁখোজ</a>
+                <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Lost</a>
+                <a href="#" class="w3-bar-item w3-button bengali-content">নেতৃত্ব</a>
+                <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Leaders</a>
+            </div>
+        </div>
+        <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white bengali-content">অপরাধী</a>
+        <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white english-content" style="display: none;">Traitors</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white bengali-content">যুদ্ধকথন</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white english-content" style="display: none;">Fighters Tale</a>
+        <div class="w3-dropdown-hover w3-hide-small">
+            <button class="w3-button bengali-content" title="Notifications">তথ্য দিন <i class="fa fa-caret-down"></i></button>
+            <button class="w3-button english-content" title="Notifications" style="display: none;">Give Info <i class="fa fa-caret-down"></i></button>
+            <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                <a href="#" class="w3-bar-item w3-button bengali-content">শহীদ</a>
+                <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Martyrs</a>
+                <a href="./record.html" class="w3-bar-item w3-button bengali-content">আহত</a>
+                <a href="./record.html" class="w3-bar-item w3-button english-content" style="display: none;">Injured</a>
+                <a href="#" class="w3-bar-item w3-button bengali-content">নিঁখোজ</a>
+                <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Lost</a>
+            </div>
+        </div>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+    </div>
+
+    <!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
+        <a href="#team" class="w3-bar-item w3-button bengali-content">বিষয়বস্তু</a>
+        <a href="#team" class="w3-bar-item w3-button english-content" style="display: none;">About Movement</a>
+        <a href="#work" class="w3-bar-item w3-button bengali-content">কাজ</a>
+        <a href="#work" class="w3-bar-item w3-button english-content" style="display: none;">Work</a>
+        <a href="#pricing" class="w3-bar-item w3-button bengali-content">মূল্য</a>
+        <a href="#pricing" class="w3-bar-item w3-button english-content" style="display: none;">Price</a>
+        <a href="#contact" class="w3-bar-item w3-button bengali-content">যোগাযোগ</a>
+        <a href="#contact" class="w3-bar-item w3-button english-content" style="display: none;">Contact</a>
+        <a href="#" class="w3-bar-item w3-button bengali-content">অনুসন্ধান</a>
+        <a href="#" class="w3-bar-item w3-button english-content" style="display: none;">Search</a>
+    </div>
+</div>
+
+<!-- Image Header -->
+<div class="photo-container">
+    <img src="Bangladesh.png" alt="Sample Photo" style="width: 1900px; min-height:250px; max-height:400px;">
+    <a href="./record.html" class="overlay-button bengali-content">আহতদের তথ্য দিন</a>
+    <a href="./record.html" class="overlay-button english-content" style="display: none;">Provide Information about the Injured</a>
+    <div class="overlay-text bengali-content">
+        <span class="overlay-text">আহতদের তালিকা</span>
+    </div>
+    <div class="overlay-text english-content" style="display: none;">
+        <span class="overlay-text">List of the Injured</span>
+    </div>
+</div>
+
+<!-- Team Container -->
+<div class="w3-container w3-padding-64 w3-center" id="team">
+    <div class="w3-row-padding w3-section">
+        <!-- Photo 1 -->
+        <div class="flex-row">
+            <div class="flex-item">
+                <a href="./page1.html">
+                    <img class="demo" src="injured/Person1/person1.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">অজানা</p><br>
+                        <span class="text-small">মসজিদের মুয়াজ্জিন</span><br>
+                        <span class="text-small">চোখের ইনফেকশন</span><br>
+                        <span class="text-small">বিকাশ- ০১৯১৪৮২০২২৪</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Unknown</p><br>
+                        <span class="text-small">Mosque Muezzin</span><br>
+                        <span class="text-small">Eye Infection</span><br>
+                        <span class="text-small">Bkash- 01914820224</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 2 -->
+            <div class="flex-item">
+                <a href="./page2.html">
+                    <img class="demo" src="injured/Person2/person2.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">মুহাম্মদ ফয়সাল খান</p><br>
+                        <span class="text-small">কুরআনের হাফেজ</span><br>
+                        <span class="text-small">চোখে গুলি লেগেছে</span><br>
+                        <span class="text-small">বিকাশ- ০১৭২০০৭৭০৫৭</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Muhammad Faisal Khan</p><br>
+                        <span class="text-small">Hafiz of the Quran</span><br>
+                        <span class="text-small">Shot in the Eye</span><br>
+                        <span class="text-small">Bkash- 01720077057</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 3 -->
+            <div class="flex-item">
+                <a href="./page3.html">
+                    <img class="demo" src="injured/Person3/3.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">সায়েম</p><br>
+                        <span class="text-small">ছাত্র (হাটহাজারী কলেজ)</span><br>
+                        <span class="text-small">পুলিশের গুলিতে আহত</span><br>
+                        <span class="text-small">বিকাশ-</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Sayem</p><br>
+                        <span class="text-small">Student (Hathazari College)</span><br>
+                        <span class="text-small">Injured by Police Shooting</span><br>
+                        <span class="text-small">Bkash-</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 4 -->
+            <div class="flex-item">
+                <a href="./page4.html">
+                    <img class="demo" src="injured/Person4/455854529_530576802870885_1940235652620803909_n.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">সানজিদ আহমেদ</p><br>
+                        <span class="text-small">ছাত্র</span><br>
+                        <span class="text-small">গুলিতে আহত</span><br>
+                        <span class="text-small">বিকাশ-</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Sanjid Ahmed</p><br>
+                        <span class="text-small">Student</span><br>
+                        <span class="text-small">Injured by Gunshot</span><br>
+                        <span class="text-small">Bkash-</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 5 -->
+            <div class="flex-item">
+                <a href="./page5.html">
+                    <img class="demo" src="injured/Person5/454773446_1027755405421431_3671601947046705141_n.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">মোঃ নাহিদ হাসান</p><br>
+                        <span class="text-small">ছাত্র</span><br>
+                        <span class="text-small">মাথায় আঘাত</span><br>
+                        <span class="text-small">বিকাশ-</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Md. Nahid Hasan</p><br>
+                        <span class="text-small">Student</span><br>
+                        <span class="text-small">Injured in the Head</span><br>
+                        <span class="text-small">Bkash-</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 6 -->
+            <div class="flex-item">
+                <a href="./page6.html">
+                    <img class="demo" src="injured/Person6/454252487_1033779042087684_5022482451311360026_n.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">দ্বীপ মাহবুব</p><br>
+                        <span class="text-small">ছাত্র</span><br>
+                        <span class="text-small">চোখের ইনফেকশন</span><br>
+                        <span class="text-small">বিকাশ- ০১৩১৯১৬০৮১৭</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Dip Mahbub</p><br>
+                        <span class="text-small">Student</span><br>
+                        <span class="text-small">Eye Infection</span><br>
+                        <span class="text-small">Bkash- 01319160817</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 7 -->
+            <div class="flex-item">
+                <a href="./page7.html">
+                    <img class="demo" src="injured/Person7/455840273_980279967118644_3905418034394990585_n (1).jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">আবুল কায়সার হাসান</p><br>
+                        <span class="text-small">অজানা</span><br>
+                        <span class="text-small">ফুসফুসে গুলি</span><br>
+                        <span class="text-small">বিকাশ-</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Abul Kaiser Hasan</p><br>
+                        <span class="text-small">Unknown</span><br>
+                        <span class="text-small">Shot in the Lungs</span><br>
+                        <span class="text-small">Bkash-</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 8 -->
+            <div class="flex-item">
+                <a href="./page8.html">
+                    <img class="demo" src="injured/Person8/image-286736-1723743351.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">ইমন</p><br>
+                        <span class="text-small">ছাত্র</span><br>
+                        <span class="text-small">গুলিতে আহত</span><br>
+                        <span class="text-small">বিকাশ-</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Imon</p><br>
+                        <span class="text-small">Student</span><br>
+                        <span class="text-small">Injured by Gunshot</span><br>
+                        <span class="text-small">Bkash-</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 9 -->
+            <div class="flex-item">
+                <a href="./page9.html">
+                    <img class="demo" src="injured/Person9/456014007_1488008318500325_689548330543044911_n.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">নাজিম হোসেন</p><br>
+                        <span class="text-small">পায়ে গুলি</span><br>
+                        <span class="text-small">বিকাশ- ০১৮৬৩০৬৪১৩৩</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Nazim Hossain</p><br>
+                        <span class="text-small">Shot in the Leg</span><br>
+                        <span class="text-small">Bkash- 01863064133</span><br>
+                    </div>
+                </a>
+            </div>
+            <!-- Photo 10 -->
+            <div class="flex-item">
+                <a href="./page10.html">
+                    <img class="demo" src="injured/Person10/imran.jpg" style="width:100%; height:200px ; cursor:pointer" title="person1">
+                    <div class="bengali-content">
+                        <p class="text-large">ইমরান</p><br>
+                        <span class="text-small">ছাত্র, ঢাকা কলেজ</span><br>
+                        <span class="text-small">পায়ে মেয়াদোত্তীর্ণ গুলি</span><br>
+                        <span class="text-small">বিকাশ-</span><br>
+                    </div>
+                    <div class="english-content" style="display: none;">
+                        <p class="text-large">Imran</p><br>
+                        <span class="text-small">Student, Dhaka College</span><br>
+                        <span class="text-small">Injured by Expired Bullet</span><br>
+                        <span class="text-small">Bkash-</span><br>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+    <h4 class="bengali-content">আমাদের অনুসরণ কর</h4>
+    <h4 class="english-content" style="display: none;">Follow Us</h4>
+    <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
+    <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
+    <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
+    <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+    <p class="bengali-content">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    <p class="english-content" style="display: none;">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+    <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+        <span class="w3-text w3-padding w3-teal w3-hide-small bengali-content">উপরের দিকে যাও</span>
+        <span class="w3-text w3-padding w3-teal w3-hide-small english-content" style="display: none;">Go To Top</span>
+        <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge"><i class="fa fa-chevron-circle-up"></i></span></a>
+    </div>
+</footer>
+
+<script>
+// Script for side navigation
+function w3_open() {
+    var x = document.getElementById("mySidebar");
+    x.style.width = "300px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+// Script to toggle language and content visibility
+let isBengali = true;
+
+function toggleLanguage() {
+    const bengaliText = document.getElementById("bengali-text");
+    const englishText = document.getElementById("english-text");
+    
+    if (isBengali) {
+        // Switch to English as active
+        bengaliText.classList.remove("active");
+        bengaliText.classList.add("inactive");
+        englishText.classList.remove("inactive");
+        englishText.classList.add("active");
+        isBengali = false;
+        toggleContentVisibility("english-content", "bengali-content");
+    } else {
+        // Switch to Bengali as active
+        bengaliText.classList.remove("inactive");
+        bengaliText.classList.add("active");
+        englishText.classList.remove("active");
+        englishText.classList.add("inactive");
+        isBengali = true;
+        toggleContentVisibility("bengali-content", "english-content");
+    }
+}
+
+function toggleContentVisibility(showClass, hideClass) {
+    // Show elements of the selected language
+    const showElements = document.getElementsByClassName(showClass);
+    for (let i = 0; i < showElements.length; i++) {
+        showElements[i].style.display = 'block';
+    }
+
+    // Hide elements of the other language
+    const hideElements = document.getElementsByClassName(hideClass);
+    for (let i = 0; i < hideElements.length; i++) {
+        hideElements[i].style.display = 'none';
+    }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+
+
+
+"""
+Data Structures for practice
+Arrays			Strings
+HashMaps		LinkedList
+Trees			Graphs
+Stacks			Queues
+Binary Search Trees	Heaps
+
+"""
+Easy-40 Medium-40 Hard-20
+
+Practice as you are in a real Interview
+Time Yourself, solve every problem under 30 minutes
+ 
+ 
+ ARRAYS 
+ 
+ 4(easy)
+ 1.Two Sum
+ 26. Remove Duplicates from Sorted Array
+ 27. Remove Element
+ 35. Search Insert Position
+ 
+ 
+ 
+ 
+ STRINGS
+ 
+ 4(easy)
+ 3. Longest Substring withouth Repeating character
+ 5 Longest palindromic Substring
+ 6. Zigzag Conversion
+ 8. String to integer (atoi)
+ 
+ 
+ HASHMAP
+ 
+  4(easy)
+ 13. Roman to integer
+ 141 Linked List cycle
+ 160 Intersect of Two Linked Lists
+ 169 Majority Element
+ 
+ 
+ LINKEDLIST
+ 
+ 4(easy)
+ 1290. Convert Binary Number in a Linked List
+ 876. Middle of the Linked List
+ 706. Design hasMap
+ 705 Desigh HashSet
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+CREATE TABLE IF NOT EXISTS patient (
+    id SERIAL PRIMARY KEY,
+    injured_name VARCHAR(255) NOT NULL,
+    dob DATE,
+    NID VARCHAR(255) NOT NULL,
+    injured_address TEXT NOT NULL,
+    division VARCHAR(255) NOT NULL,
+    district VARCHAR(255) NOT NULL,
+    occupation VARCHAR(255) NOT NULL,
+    
+    jobplace VARCHAR(255),
+    expenditure VARCHAR(255),
+    paymentOption VARCHAR(255),
+    paymentField VARCHAR(255),
+    
+    family_phone VARCHAR(255) NOT NULL,
+    info_provider TEXT NOT NULL,
+    hospital VARCHAR(255) NOT NULL,
+    hospital_contact VARCHAR(255) NOT NULL,
+    injury_description TEXT NOT NULL,
+    news_link TEXT,
+    document TEXT, -- To store file paths for documents
+    photo TEXT NOT NULL, -- To store file paths for photos
+    
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ 
+ 
+  // Update input placeholders
+    document.getElementById("injured_name")
+    document.getElementById("dob")
+    document.getElementById("NID")
+    document.getElementById("injured_address")
+    document.getElementById("occupation")
+    document.getElementById("jobplace")
+    document.getElementById("expenditure")
+    document.getElementById("family_phone")
+    document.getElementById("info_provider")
+    document.getElementById("hospital")
+    document.getElementById("contact_hospital")
+    document.getElementById("injury_description")
+  }
+ 
+{
+	"injured_name": "Sarah Williams",
+	"dob": "1975-12-05",
+	"injured_address": "321 Pine St, Star City",
+	"injured_occupation": "Nurse",
+	"pot_name": "David Williams",
+	"pot_contact": "555-4321",
+	"injury_description": "Broken arm from a sports injury",
+	"news_link": "http://news.example.com/article-789",
+	"family_contact": "555-6677",
+	"document": "files/report3.pdf",
+	"expenditure": "$2500",
+	"informant_contact": "555-7788",
+	"photo": "images/photo3.jpg"
+}
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ CREATE TABLE IF NOT EXISTS patient (
+    id SERIAL PRIMARY KEY,
+    injured_name VARCHAR(255) NOT NULL,
+    dob DATE,
+    NID VARCHAR(255) NOT NULL,
+    injured_address TEXT NOT NULL,
+    division VARCHAR(255) NOT NULL,
+    district VARCHAR(255) NOT NULL,
+    occupation VARCHAR(255) NOT NULL,
+    
+    jobplace VARCHAR(255) DEFAULT '', 
+    expenditure VARCHAR(255) DEFAULT '',
+    paymentOption VARCHAR(255) DEFAULT '',
+    paymentField VARCHAR(255) DEFAULT '',
+    family_phone VARCHAR(255) NOT NULL,
+    info_provider TEXT NOT NULL,
+    hospital VARCHAR(255) NOT NULL,
+    hospital_contact VARCHAR(255) NOT NULL,
+    
+    injury_description TEXT NOT NULL,
+    news_link TEXT DEFAULT '',
+    status VARCHAR(100) DEFAULT 'pending',
+    document TEXT,
+    photo TEXT NOT NULL,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
