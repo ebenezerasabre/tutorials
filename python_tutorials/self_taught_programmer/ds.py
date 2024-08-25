@@ -648,7 +648,7 @@ class BinaryTree:
 		else:
 			bin_tree = BinaryTree(value)
 			bin_tree.left_child = self.left_child
-			self.left_child = bin_tree.left_child
+			self.left_child = bin_tree
 	
 	def insert_right(self, value):
 		if self.right_child == None:
@@ -656,39 +656,104 @@ class BinaryTree:
 		else:
 			bin_tree = BinaryTree(value)
 			bin_tree.right_child = self.right_child
-			self.right_child = bin_tree.right_child
+			self.right_child = bin_tree
 
 	def bfs(self, target):
 		current = [self]
 		next = []
+		str = []
 		while current:
 			for node in current:
 				if node.key == target:
-					return True
+					str.append(node.key)
+					#return True
+				if node.left_child:
+					next.append(node.left_child)
+					str.append(node.left_child.key)
+				if node.right_child:
+					next.append(node.right_child)
+					str.append(node.right_child.key)
+			current = next
+			next = []
+		return str
+
+	# will invert left and right of each level
+	def invert(self):
+		current = [self]
+		next = []
+		while current:
+			for node in current:
+				if node.left_child:
+					next.append(node.left_child)
+				if node.right_child:
+					next.append(node.right_child)
+				tmp = node.left_child
+				node.left_child = node.right_child
+				node.right_child = tmp
+			current = next
+			next = []
+
+	def has_leaf(self):
+		current = [self]
+		next = []
+		leaves = []
+		while current:
+			for node in current:
+				if node.left_child is None and node.right_child is None:
+					leaves.append(node.key)
 				if node.left_child:
 					next.append(node.left_child)
 				if node.right_child:
 					next.append(node.right_child)
 			current = next
 			next = []
-		return False
+		return leaves
+
 
 
 bin_tree = BinaryTree(1)
-bin_tree.insert_left(3)
-bin_tree.insert_right(9)
 
-print(bin_tree.bfs(6))
+bin_tree.insert_left(2)
+bin_tree.insert_right(3)
+
+bin_tree.left_child.insert_right(11)
+bin_tree.right_child.insert_left(12)
+
+bin_tree.insert_left(4)
+bin_tree.insert_right(5)
+
+bin_tree.insert_left(6)
+bin_tree.insert_right(7)
+
+print(bin_tree.bfs(1))
+
+#bin_tree.invert()
+
+print(bin_tree.bfs(1))
+
+print(bin_tree.has_leaf())
 
 
+def dfs_pre_order(tree):
+	if tree:
+		print(tree.key)
+		dfs_pre_order(tree.left_child)
+		dfs_pre_order(tree.right_child)
+
+def dfs_post_order(tree):
+	if tree:
+		dfs_post_order(tree.left_child)
+		dfs_post_order(tree.right_child)
+		print(tree.key)
+
+def dfs_in_order(tree):
+	if tree:
+		dfs_in_order(tree.left_child)
+		print(tree.key)
+		dfs_in_order(tree.right_child)
 
 
-
-
-
-
-
-
+#dfs_pre_order(bin_tree)
 
 
 
