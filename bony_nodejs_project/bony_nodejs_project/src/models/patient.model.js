@@ -73,10 +73,6 @@ const createPatient = async (userData) => {
                     $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19
                 ) RETURNING id;
       `;
-      // const values = [userData.injured_name, userData.dob, userData.injured_address, userData.injured_occupation, userData.pot_name,
-      //   userData.pot_contact, userData.injury_description, userData.news_link, userData.family_contact, userData.document,
-      //   userData.expenditure,  userData.informant_contact, userData.photo
-      // ];
 
         const values = [
           userData.injured_name,

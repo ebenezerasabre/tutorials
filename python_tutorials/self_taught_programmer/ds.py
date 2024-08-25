@@ -658,13 +658,12 @@ class BinaryTree:
 			bin_tree.right_child = self.right_child
 			self.right_child = bin_tree.right_child
 
-
-	def bfs(self, n):
+	def bfs(self, target):
 		current = [self]
 		next = []
 		while current:
 			for node in current:
-				if node.key == n:
+				if node.key == target:
 					return True
 				if node.left_child:
 					next.append(node.left_child)
@@ -675,37 +674,11 @@ class BinaryTree:
 		return False
 
 
-tree = BinaryTree(1)
-tree.insert_left(2)
-tree.insert_right(3)
-tree.insert_left(4)
-tree.left_child.insert_left(6)
-tree.insert_right(5)
+bin_tree = BinaryTree(1)
+bin_tree.insert_left(3)
+bin_tree.insert_right(9)
 
-
-
-print(tree.left_child.key)
-#print(bin_tree.left_child.left_child.key)
-#print(new_bin.left_child.key)
-
-print(tree.bfs(1))
-
-cont = [tree]
-
-search = 5
-current = [tree]
-next = []
-while current:
-	for node in cont:
-		if node.key == search:
-			return True
-		if node.left_child:
-			next.append(node.left_child)
-		if node.right_child:
-			next.append(node.right_child)
-		current = next
-		next = []
-
+print(bin_tree.bfs(6))
 
 
 

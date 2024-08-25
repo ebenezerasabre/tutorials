@@ -166,6 +166,256 @@ CREATE TABLE IF NOT EXISTS patient (
 
  
  
+     INSERT INTO your_table_name (injured_name, dob, injured_address, photo, document) VALUES ($1, $2, $3, $4, $5) RETURNING id;
+ 
+ 
+
+console.log('injured_name ', req.body.injured_name);
+console.log(' dob ', req.body.dob);
+console.log(' NID ', req.body.NID);
+console.log(' injured_address ', req.body.injured_address);
+console.log(' division ', req.body.division);
+console.log(' district ', req.body.district);
+console.log(' occupation ', req.body.occupation);
+
+console.log(' jobplace', req.body.jobplace);
+console.log(' expenditure ', req.body.expenditure);
+console.log(' paymentOption', req.body.paymentOption);
+console.log(' paymentField ', req.body.paymentField);
+
+console.log(' family_phone ', req.body.family_phone);
+console.log(' info_provider ', req.body.info_provider);
+console.log(' hospital ', req.body.hospital);
+console.log(' hospital_contact ', req.body.hospital_contact);
+console.log(' injury_description ', req.body.injury_description);
+console.log(' news_link ', req.body.news_link);
+
+   console.log('Photos:', req.files['photo']); // Array of photos
+        console.log('documents:', req.files['document']); // Array of photos
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+         const photoFiles = req.files['photo'];
+        const documentFiles = req.files['document'];
+
+        const photoPaths = photoFiles.map(file => file.path).join(',');
+        const documentPaths = documentFiles.map(file => file.path).join(',');
+
+        console.log('Photos:', photoPaths); // Array of photos
+        console.log('documents:', documentPaths); // Array of photos
+ 
+ 
+ 
+ 
+         const photoFiles = req.files['photo'];
+        const documentFiles = req.files['document'];
+
+        const photoPaths = photoFiles.map(file => file.path).join(',');
+        const documentPaths = documentFiles.map(file => file.path).join(',');
+
+        console.log('Photos:', photoPaths); // Array of photos
+        console.log('documents:', documentPaths); // Array of photos
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        const userData = {
+            injured_name: req.body.injured_name,
+            dob: req.body.dob,
+            NID: req.body.NID,
+            injured_address: req.body.injured_address,
+            division: req.body.division,
+            district: req.body.district,
+            occupation: req.body.occupation,
+            jobplace: req.body.jobplace,
+            expenditure: req.body.expenditure,
+            paymentOption: req.body.paymentOption,
+            paymentField: req.body.paymentField,
+            family_phone: req.body.family_phone,
+            info_provider: req.body.info_provider,
+            hospital: req.body.hospital,
+            hospital_contact: req.body.hospital_contact,
+            injury_description: req.body.injury_description,
+            news_link: req.body.news_link,
+            photo: photoPaths,
+            document: documentPaths
+        };
+ 
+ 
+ 
+    const userData = [
+            req.body.injured_name,
+            req.body.dob,
+            req.body.NID,
+            req.body.injured_address,
+            req.body.division,
+            req.body.district,
+            req.body.occupation,
+            req.body.jobplace,
+            req.body.expenditure,
+            req.body.paymentOption,
+            req.body.paymentField,
+            req.body.family_phone,
+            req.body.info_provider,
+            req.body.hospital,
+            req.body.hospital_contact,
+            req.body.injury_description,
+            req.body.news_link,
+            photoPaths,
+            documentPaths
+        ];
+ 
+ 
+   try {
+
+            console.log("trying")
+            const query = `
+                INSERT INTO patient (
+                        injured_name,dob,NID,injured_address,division,district,occupation, 
+                        jobplace,expenditure,paymentOption,paymentField,family_phone, info_provider, 
+                        hospital, hospital_contact, injury_description, news_link, document,photo
+                    ) VALUES (
+                        $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19
+                    ) RETURNING id;
+            `;
+            const values = userData;
+            const result = await myPool.query(query, values);
+            console.log("result: ", result);
+            res.status(200).send('Files uploaded and data saved success');
+
+        } catch(err){
+
+        }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+const createPatient = async (userData) => {
+    try {
+      const query = `
+          INSERT INTO patient (
+                    injured_name,dob,NID,injured_address,division,district,occupation, 
+                    jobplace,expenditure,paymentOption,paymentField,family_phone, info_provider, 
+                    hospital, hospital_contact, injury_description, news_link, document,photo
+                ) VALUES (
+                    $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19
+                ) RETURNING id;
+      `;
+      // const values = [userData.injured_name, userData.dob, userData.injured_address, userData.injured_occupation, userData.pot_name,
+      //   userData.pot_contact, userData.injury_description, userData.news_link, userData.family_contact, userData.document,
+      //   userData.expenditure,  userData.informant_contact, userData.photo
+      // ];
+
+        const values = [
+          userData.injured_name,
+          userData.dob,
+          userData.NID,
+          userData.injured_address,
+          userData.division,
+          userData.district,
+          userData.occupation,
+          userData.jobplace,
+          userData.expenditure,
+          userData.paymentOption,
+          userData.paymentField,
+          userData.family_phone,
+          userData.info_provider,
+          userData.hospital,
+          userData.hospital_contact,
+          userData.injury_description,
+          userData.news_link,
+          userData.document,
+          userData.photo
+        ];
+
+        console.log("from values", values);
+
+      const result = await pool.query(query, values);
+      return result.rows[0];
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
+
+ 
+ 
+ 
+ 
+ 
+ 
+  async function submitPatientData(userData) {
+    try {
+        // Log the user data
+        //console.log(userData);
+
+        // Insert the data into the patient table
+        const data = await patientModel.createPatient(userData);
+
+        // Log the success message with the returned data
+        console.log('Form submitted successfully:', data);
+
+        // Optionally send a response or redirect the user to another page
+        // res.sendFile(path.join(__dirname, 'public', 'record.html'));
+
+    } catch (err) {
+        // Handle errors and send a 500 status code with an error message
+        console.log('Error submitting form');
+    }
+}
+
+ 
+ 
+ Connected to the PostgreSQL database
+from values [
+  'asdfasdf',
+  'asdfasdf',
+  'asdf',
+  'asdaf',
+  'asdfs',
+  'fdsasda',
+  'my great occupation',
+  'fdasdf',
+  'asdfas',
+  'fdassdf',
+  'fdasdf',
+  'fdasdfa',
+  'fdsads',
+  'fdsasd',
+  'fdsasda',
+  'fdasdfasdf',
+  'fdsasdf',
+  '/home/ebenezer/Developer/tutorials/bony_nodejs_project/bony_nodejs_project/pics/1724442631132-TDD_for_Emb_C.pdf,/home/ebenezer/Developer/tutorials/bony_nodejs_project/bony_nodejs_project/pics/1724442631158-Refactoring-Improving-the-Design-of-Existing-Code-Addison-Wesley-Professional-1999.pdf',
+  '/home/ebenezer/Developer/tutorials/bony_nodejs_project/bony_nodejs_project/pics/1724442631130-Screenshot from 2024-08-21 19-44-11.png,/home/ebenezer/Developer/tutorials/bony_nodejs_project/bony_nodejs_project/pics/1724442631130-exp_skna_vsmv.png'
+]
+Connected to the PostgreSQL database
+Error submitting form
+
  
  
  
