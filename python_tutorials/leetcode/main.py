@@ -9,6 +9,8 @@ class Solution:
                 return [seen[complement], i]
             seen[num] = i
 
+
+
 #1. Two sum using brute force
 # i.e. iterating through the list and adding up each pair of numbers
 def two_sum_brute(target, list1):
@@ -23,23 +25,29 @@ target = 9
 print(two_sum_brute(target, a_list))
 
 
-
-
-
-
-
 # IP - 159.203.69.251
 
 # pw- 1234*Abcd
-Abcd*1234
+#Abcd*1234
 # domain name- roktakto-july2024.info
 
 
 
 
+final = []
+seen = {}
+for index, strng in enumerate(strs):
+    srtd = ''.join(sorted(strng))
+    if srtd in seen:
+        final[seen[srtd]].append(strng)
+    else:
+        seen[srtd] = len(final)
+        final.append([strng])
+return final
 
 
-*
+
+
 
 
 

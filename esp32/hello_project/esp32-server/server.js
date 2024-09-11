@@ -21,3 +21,37 @@ app.listen(port, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${port}`);
 });
 
+
+//ssh ebenx@10.0.0.53
+//password 1995
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
